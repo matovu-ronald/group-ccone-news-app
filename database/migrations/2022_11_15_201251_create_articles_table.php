@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained();
+            $table->string('title');
+            $table->string('slug');
+            $table->string('image')->nullable();
+            $table->text('excerpt')->nullable();
+            $table->longText('content')->nullable();
+            $table->boolean('is_featured')->default(false);
+            $table->string('status')->default('DRAFT');
             $table->timestamps();
         });
     }
